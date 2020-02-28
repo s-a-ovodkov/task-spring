@@ -1,5 +1,7 @@
 package ru.otus.ovodkov.homework.domain;
 
+import java.util.List;
+
 /**
  * Вопрос тестирования
  *
@@ -8,7 +10,7 @@ package ru.otus.ovodkov.homework.domain;
 public class Question {
 
     private String question;
-    private String[] answerOptions;
+    private List<String> answerOptions;
     private int correctAnswer;
 
     public String getQuestion() {
@@ -19,11 +21,11 @@ public class Question {
         this.question = question;
     }
 
-    public String[] getAnswerOptions() {
+    public List<String> getAnswerOptions() {
         return answerOptions;
     }
 
-    public void setAnswerOptions(String[] answerOptions) {
+    public void setAnswerOptions(List<String> answerOptions) {
         this.answerOptions = answerOptions;
     }
 
@@ -42,7 +44,7 @@ public class Question {
      * @param answerOptions Список вариантов ответов.
      * @param correctAnswer Номер правильного варианта ответа.
      */
-    public Question(String question, String[] answerOptions, int correctAnswer) {
+    public Question(String question, List<String> answerOptions, int correctAnswer) {
         this.question = question;
         this.answerOptions = answerOptions;
         this.correctAnswer = correctAnswer;
