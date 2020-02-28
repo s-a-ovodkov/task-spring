@@ -7,23 +7,23 @@ package ru.otus.ovodkov.homework.domain;
  */
 public class Student {
 
-    private String FirstName;
-    private String LastName;
+    private String firstName;
+    private String lastName;
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     /**
@@ -33,7 +33,7 @@ public class Student {
      * @param lastName  Фамилия студента.
      */
     public Student(String firstName, String lastName) {
-        FirstName = firstName;
-        LastName = lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 }
