@@ -10,8 +10,6 @@ import ru.otus.ovodkov.homework.domain.TestResult;
 public interface StudentTestingService {
     /**
      * Запуск процесса тестирования студента.
-     *
-     * @return Результат пройденного теста.
      */
-    TestResult studentTesting();
+    void studentTesting();
 }

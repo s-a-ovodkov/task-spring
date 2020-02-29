@@ -14,25 +14,28 @@ import java.util.List;
  * @author Sergey Ovodkov
  */
 public class StudentTestingServiceImpl implements StudentTestingService {
-    private QuestionsDao questionsDao;
-    private StudentDao studentDao;
-    private RenderQuestion renderQuestion;
-    private AnswerProcessing answerProcessing;
+    private final QuestionsDao questionsDao;
+    private final StudentDao studentDao;
+    private final RenderQuestion renderQuestion;
+    private final AnswerProcessing answerProcessing;
+    private final RenderTestResult renderTestResult;
 
     public StudentTestingServiceImpl(QuestionsDao questionsDao,
                                      StudentDao studentDao,
                                      RenderQuestion renderQuestion,
-                                     AnswerProcessing answerProcessing) {
+                                     AnswerProcessing answerProcessing,
+                                     RenderTestResult renderTestResult) {
         this.questionsDao = questionsDao;
         this.studentDao = studentDao;
         this.renderQuestion = renderQuestion;
         this.answerProcessing = answerProcessing;
+        this.renderTestResult = renderTestResult;
     }
 
     /**
      * @see StudentTestingService#studentTesting()
      */
-    public TestResult studentTesting() {
+    public void studentTesting() {
         List<Question> questions = questionsDao.getQuestions();
         Student student = studentDao.getStudentPersonalData();
 
@@ -43,6 +46,6 @@ public class StudentTestingServiceImpl implements StudentTestingService {
             countCorrectAnswer += answerProcessing.getAnswer() == question.getCorrectAnswer() ? 1 : 0;
         }
 
-        return new TestResult(student, countCorrectAnswer);
+        renderTestResult.showTestResult(new TestResult(student, countCorrectAnswer));
     }
 }

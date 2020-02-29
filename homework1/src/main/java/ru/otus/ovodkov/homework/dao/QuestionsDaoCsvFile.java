@@ -23,12 +23,12 @@ import java.util.List;
  */
 public class QuestionsDaoCsvFile implements QuestionsDao {
 
-    private String fileName;
+    private final String fileName;
 
     /**
      * .ctor
      *
-     * @param path
+     * @param path Имя ресурса. Файл CSV с вопросами
      */
     public QuestionsDaoCsvFile(String path) {
         this.fileName = path;
