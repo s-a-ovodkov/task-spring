@@ -18,6 +18,7 @@
         <constructor-arg name="studentDao" ref="studentDao"/>
         <constructor-arg name="renderQuestion" ref="renderQuestion"/>
         <constructor-arg name="answerProcessing" ref="answerProcessing"/>
+        <constructor-arg name="renderTestResult" ref="renderTestResult"/>
     </bean>
 
 </beans>
