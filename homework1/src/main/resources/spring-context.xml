@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="questionsDao" class="ru.otus.ovodkov.homework.dao.QuestionsDaoCsvFile">
+        <constructor-arg name="path" value="questions.csv"/>
+    </bean>
+
+    <bean id="studentDao" class="ru.otus.ovodkov.homework.dao.StudentDaoConsole"/>
+    <bean id="answerProcessing" class="ru.otus.ovodkov.homework.services.AnswerProcessingConsole"/>
+    <bean id="renderQuestion" class="ru.otus.ovodkov.homework.services.RenderQuestionConsole"/>
+    <bean id="renderTestResult" class="ru.otus.ovodkov.homework.services.RenderTestResultConsole"/>
+
+    <bean id="studentTestingService" class="ru.otus.ovodkov.homework.services.StudentTestingServiceImpl">
+        <constructor-arg name="questionsDao" ref="questionsDao"/>
+        <constructor-arg name="studentDao" ref="studentDao"/>
+        <constructor-arg name="renderQuestion" ref="renderQuestion"/>
+        <constructor-arg name="answerProcessing" ref="answerProcessing"/>
+    </bean>
+
+</beans>
