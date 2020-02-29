@@ -3,7 +3,7 @@ package ru.otus.ovodkov.homework.domain;
 /**
  * Данные тестируемого студента
  *
- * @author ovodkov.s
+ * @author Sergey Ovodkov
  */
 public class Student {
 
@@ -35,5 +35,9 @@ public class Student {
     public Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public String toString(){
+        return firstName + " " + lastName;
     }
 }
