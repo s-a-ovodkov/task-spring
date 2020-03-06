@@ -18,17 +18,24 @@ import java.util.Scanner;
 @Repository
 public class StudentDaoConsole implements StudentDao {
 
+    private final MessageSource messageSource;
+    private final Locale useAppLocale;
+
     @Autowired
-    private MessageSource messageSource;
+    public StudentDaoConsole(MessageSource messageSource,
+                             Locale useAppLocale) {
+        this.messageSource = messageSource;
+        this.useAppLocale = useAppLocale;
+    }
 
     /**
      * @see StudentDao#getStudentPersonalData()
      */
     public Student getStudentPersonalData() {
         Scanner in = new Scanner(System.in);
-        System.out.print(messageSource.getMessage("student.firstName", null, Locale.ENGLISH));
+        System.out.print(messageSource.getMessage("student.firstName", null, useAppLocale));
         String firstName = in.nextLine();
-        System.out.print(messageSource.getMessage("student.lastName", null, Locale.ENGLISH));
+        System.out.print(messageSource.getMessage("student.lastName", null, useAppLocale));
         String lastName = in.nextLine();
         return new Student(firstName, lastName);
     }
