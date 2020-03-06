@@ -13,7 +13,8 @@ public interface RenderTestResult {
     /**
      * Отображение результатов тестирования.
      *
-     * @param testResult Результат пройденного теста.
+     * @param testResult   Результат пройденного теста.
+     * @param isPassedTest Признак того, что тест сдан.
      */
-    void showTestResult(TestResult testResult);
+    void showTestResult(TestResult testResult, boolean isPassedTest);
 }
