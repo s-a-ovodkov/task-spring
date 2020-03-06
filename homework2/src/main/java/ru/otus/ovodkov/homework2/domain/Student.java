@@ -31,7 +31,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String toString(){
+    public String toString() {
         return firstName + " " + lastName;
     }
 }

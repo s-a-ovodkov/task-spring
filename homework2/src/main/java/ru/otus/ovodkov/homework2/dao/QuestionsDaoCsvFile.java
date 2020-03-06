@@ -4,6 +4,7 @@ import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 import ru.otus.ovodkov.homework2.domain.Question;
 
 import java.io.BufferedReader;
@@ -24,16 +25,17 @@ import java.util.List;
  * @project homework2
  * @created 2020-03-05
  */
-public class QuestionsDaoCsvFile {
+@Repository
+public class QuestionsDaoCsvFile implements QuestionsDao {
 
     private final String csvFileName;
 
     /**
      * .ctor
      *
-     * @param fileName  Имя ресурса. Файл CSV с вопросами
+     * @param fileName Имя ресурса. Файл CSV с вопросами
      */
-    public QuestionsDaoCsvFile(@Value("@{question.file}") String fileName){
+    public QuestionsDaoCsvFile(@Value("${question.file}") String fileName) {
         this.csvFileName = fileName;
     }
 

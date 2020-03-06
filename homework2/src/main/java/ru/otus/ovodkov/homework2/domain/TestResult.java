@@ -9,8 +9,8 @@ package ru.otus.ovodkov.homework2.domain;
  */
 public class TestResult {
 
-    private Student student;
-    private int countCorrectAnswers;
+    private final Student student;
+    private final int countCorrectAnswers;
 
     public Student getStudent() {
         return student;
