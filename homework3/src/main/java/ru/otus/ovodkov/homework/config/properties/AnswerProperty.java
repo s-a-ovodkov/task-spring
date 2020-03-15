@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("answer")
 public class AnswerProperty {
-    private int answer;
+    private int success;
 
-    public int getAnswer() {
-        return answer;
+    public int getSuccess() {
+        return success;
     }
 
-    public void setAnswer(int answer) {
-        this.answer = answer;
+    public void setSuccess(int success) {
+        this.success = success;
     }
 }
