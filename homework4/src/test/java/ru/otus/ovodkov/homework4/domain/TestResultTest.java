@@ -1,10 +1,9 @@
-package domain;
+package ru.otus.ovodkov.homework4.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.otus.ovodkov.homework4.domain.Student;
-import ru.otus.ovodkov.homework4.domain.TestResult;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Доменная модель TestResult")
 public class TestResultTest {
@@ -17,7 +16,8 @@ public class TestResultTest {
     void shouldHaveCorrectConstructor() {
         TestResult testResult = new TestResult(student, countCorrectAnswers);
 
-        Assertions.assertEquals(countCorrectAnswers, testResult.getCountCorrectAnswers());
-        Assertions.assertSame(student, testResult.getStudent());
+        assertAll("testResult",
+                () -> assertEquals(countCorrectAnswers, testResult.getCountCorrectAnswers()),
+                () -> assertSame(student, testResult.getStudent()));
     }
 }

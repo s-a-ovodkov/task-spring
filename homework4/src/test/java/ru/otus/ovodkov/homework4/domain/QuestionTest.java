@@ -1,9 +1,10 @@
-package domain;
+package ru.otus.ovodkov.homework4.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.otus.ovodkov.homework4.domain.Question;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Доменная модель Question")
 public class QuestionTest {
@@ -25,11 +26,12 @@ public class QuestionTest {
                 possibleAnswer4,
                 correctAnswer);
 
-        Assertions.assertEquals(questionText, question.getQuestion());
-        Assertions.assertEquals(possibleAnswer1, question.getPossibleAnswer1());
-        Assertions.assertEquals(possibleAnswer2, question.getPossibleAnswer2());
-        Assertions.assertEquals(possibleAnswer3, question.getPossibleAnswer3());
-        Assertions.assertEquals(possibleAnswer4, question.getPossibleAnswer4());
-        Assertions.assertEquals(correctAnswer, question.getCorrectAnswer());
+        assertAll("question",
+                () -> assertEquals(questionText, question.getQuestion()),
+                () -> assertEquals(possibleAnswer1, question.getPossibleAnswer1()),
+                () -> assertEquals(possibleAnswer2, question.getPossibleAnswer2()),
+                () -> assertEquals(possibleAnswer3, question.getPossibleAnswer3()),
+                () -> assertEquals(possibleAnswer4, question.getPossibleAnswer4()),
+                () -> assertEquals(correctAnswer, question.getCorrectAnswer()));
     }
 }

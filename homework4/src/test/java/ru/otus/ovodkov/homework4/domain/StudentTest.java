@@ -1,9 +1,10 @@
-package domain;
+package ru.otus.ovodkov.homework4.domain;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.otus.ovodkov.homework4.domain.Student;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Доменная модель Student")
 public class StudentTest {
@@ -16,8 +17,9 @@ public class StudentTest {
     void shouldHaveCorrectConstructor() {
         Student student = new Student(firstName, lastName);
 
-        Assertions.assertEquals(firstName, student.getFirstName());
-        Assertions.assertEquals(lastName, student.getLastName());
+        assertAll("student",
+                () -> assertEquals(firstName, student.getFirstName()),
+                () -> assertEquals(lastName, student.getLastName()));
     }
 
     @DisplayName("корректно создается строковое представление модели")
@@ -26,6 +28,6 @@ public class StudentTest {
         Student student = new Student(firstName, lastName);
         String expected = firstName + " " + lastName;
 
-        Assertions.assertEquals(expected, student.toString());
+        assertEquals(expected, student.toString());
     }
 }
