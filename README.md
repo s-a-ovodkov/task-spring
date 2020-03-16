@@ -8,3 +8,4 @@
 
 * [Задание №1](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework1)
 * [Задание №2](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework2)
+* [Задание №3](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework3)
