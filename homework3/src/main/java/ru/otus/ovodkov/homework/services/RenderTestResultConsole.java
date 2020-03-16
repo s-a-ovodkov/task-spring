@@ -18,7 +18,6 @@ public class RenderTestResultConsole implements RenderTestResult {
     private final MessageSource messageSource;
     private final LocaleProperty localeProperty;
 
-    @Autowired
     public RenderTestResultConsole(MessageSource messageSource,
                                    LocaleProperty localeProperty) {
         this.messageSource = messageSource;

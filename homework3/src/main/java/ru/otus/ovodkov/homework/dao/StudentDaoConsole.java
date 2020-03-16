@@ -20,7 +20,6 @@ public class StudentDaoConsole implements StudentDao {
     private final MessageSource messageSource;
     private final LocaleProperty localeProperty;
 
-    @Autowired
     public StudentDaoConsole(MessageSource messageSource,
                              LocaleProperty localeProperty) {
         this.messageSource = messageSource;

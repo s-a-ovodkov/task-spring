@@ -30,7 +30,6 @@ public class StudentTestingServiceImpl implements StudentTestingService {
     private final RenderTestResult renderTestResult;
     private final AnswerProperty answerProperty;
 
-    @Autowired
     public StudentTestingServiceImpl(QuestionsDao questionsDao,
                                      StudentDao studentDao,
                                      RenderQuestion renderQuestion,
@@ -49,7 +48,7 @@ public class StudentTestingServiceImpl implements StudentTestingService {
      * @see StudentTestingService#studentTesting()
      */
     public void studentTesting() {
-        int minCorrectAnswers = answerProperty.getAnswer();
+        int minCorrectAnswers = answerProperty.getSuccess();
         List<Question> questions = questionsDao.getQuestions();
         Student student = studentDao.getStudentPersonalData();
 
