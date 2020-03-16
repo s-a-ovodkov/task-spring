@@ -20,7 +20,6 @@ public class RenderTestResultConsole implements RenderTestResult {
     private final LocaleProperty localeProperty;
     private final AnswerProperty answerProperty;
 
-    @Autowired
     public RenderTestResultConsole(MessageSource messageSource,
                                    LocaleProperty localeProperty,
                                    AnswerProperty answerProperty) {

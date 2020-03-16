@@ -29,7 +29,6 @@ public class QuestionsDaoCsvFile implements QuestionsDao {
 
     private final CsvFileProperty csvFileProperty;
 
-    @Autowired
     public QuestionsDaoCsvFile(CsvFileProperty csvFileProperty){
         this.csvFileProperty = csvFileProperty;
     }

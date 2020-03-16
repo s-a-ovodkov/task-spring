@@ -29,7 +29,6 @@ public class ApplicationCommands {
 
     private final Locale useAppLocale;
 
-    @Autowired
     public ApplicationCommands(MessageSource messageSource,
                                StudentDao studentDao,
                                StudentTestingService testingService,

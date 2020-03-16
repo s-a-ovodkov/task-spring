@@ -26,7 +26,6 @@ public class StudentTestingServiceImpl implements StudentTestingService {
     private final RenderQuestion renderQuestion;
     private final AnswerProcessing answerProcessing;
 
-    @Autowired
     public StudentTestingServiceImpl(QuestionsDao questionsDao,
                                      RenderQuestion renderQuestion,
                                      AnswerProcessing answerProcessing) {
