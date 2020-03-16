@@ -50,12 +50,18 @@ public class StudentTestingServiceImplTest {
 
     @DisplayName("проверяем метод тестирования студентов")
     @Test
-    void studentTesting(){
+    void studentTesting() {
         when(questionsDao.getQuestions()).thenReturn(questions);
         when(answerProcessing.getAnswer()).thenReturn(1);
 
         TestResult testResult = studentTestingService.studentTesting(student);
 
-        assertEquals(4, testResult.getCountCorrectAnswers());
+        assertAll("testResult",
+                () -> assertEquals(4, testResult.getCountCorrectAnswers()),
+                () -> assertSame(student, testResult.getStudent()));
+
+        verify(questionsDao, times(1)).getQuestions();
+        verify(renderQuestion, times(5)).showQuestion(any());
+        verify(answerProcessing, times(5)).getAnswer();
     }
 }
