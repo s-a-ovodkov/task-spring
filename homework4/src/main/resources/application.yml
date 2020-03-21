@@ -1,0 +1,12 @@
+resource:
+  bundle: /i18n/bundle
+
+app:
+  language: ru
+  country: RU
+
+question:
+  file: questions_ru.csv
+
+answer:
+  success: 4
