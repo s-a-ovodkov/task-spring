@@ -24,4 +24,9 @@ public class Genre {
      * Название жанра
      */
     private String nameGenre;
+
+    /**
+     * Описание жанра
+     */
+    private String descriptionGenre;
 }
