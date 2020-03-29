@@ -34,4 +34,14 @@ public class Book {
      * Год издания книги
      */
     private int yearPublishing;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "idBook=" + idBook +
+                ", titleBook='" + titleBook + '\'' +
+                ", edition=" + edition +
+                ", yearPublishing=" + yearPublishing +
+                '}';
+    }
 }

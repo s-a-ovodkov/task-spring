@@ -29,4 +29,13 @@ public class Genre {
      * Описание жанра
      */
     private String descriptionGenre;
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "idGenre=" + idGenre +
+                ", nameGenre='" + nameGenre + '\'' +
+                ", descriptionGenre='" + descriptionGenre + '\'' +
+                '}';
+    }
 }

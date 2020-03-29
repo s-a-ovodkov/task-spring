@@ -29,4 +29,13 @@ public class Author {
      * Фамилия автора
      */
     private String lastName;
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "idAuthor=" + idAuthor +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }
