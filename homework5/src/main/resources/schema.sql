@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS Authors;
+DROP TABLE IF EXISTS Books;
+DROP TABLE IF EXISTS Genres;
+DROP TABLE IF EXISTS AuthorsBooks;
+DROP TABLE IF EXISTS GenresBooks;
+
+CREATE TABLE Authors(idAuthor IDENTITY PRIMARY KEY, firstName VARCHAR(255), lastName VARCHAR(255));
+
+CREATE TABLE Books(idBook IDENTITY PRIMARY KEY, titleBook VARCHAR(255), edition INT, yearPublishing INT);
+
+CREATE TABLE Genres(idGenre IDENTITY PRIMARY KEY, nameGenre VARCHAR(255), descriptionGenre VARCHAR(255));
+
+CREATE TABLE AuthorsBooks(idBook BIGINT, idAuthor BIGINT);
+ALTER TABLE AuthorsBooks ADD FOREIGN KEY (idBook) REFERENCES Books(idBook);
+ALTER TABLE AuthorsBooks ADD FOREIGN KEY (idAuthor) REFERENCES Authors(idAuthor);
+
+CREATE TABLE GenresBooks(idBook BIGINT, idGenre BIGINT);
+ALTER TABLE GenresBooks ADD FOREIGN KEY (idBook) REFERENCES Books(idBook);
+ALTER TABLE GenresBooks ADD FOREIGN KEY (idGenre) REFERENCES Genres(idGenre);
