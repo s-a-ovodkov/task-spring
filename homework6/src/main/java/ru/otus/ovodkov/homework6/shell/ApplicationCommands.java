@@ -11,7 +11,8 @@ import ru.otus.ovodkov.homework6.domain.Comment;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.joining;
 
 @RequiredArgsConstructor
 @ShellComponent
@@ -30,7 +31,7 @@ public class ApplicationCommands {
         List<Book> books = bookRepository.getAllBooks();
         return books.stream()
                 .map(Book::toString)
-                .collect(Collectors.joining("\n"));
+                .collect(joining("\n"));
     }
 
     /**
@@ -60,7 +61,7 @@ public class ApplicationCommands {
                 ? "Не найдено книг указаного жанра"
                 : books.stream()
                 .map(Book::toString)
-                .collect(Collectors.joining("\r"));
+                .collect(joining("\r"));
     }
 
     /**
