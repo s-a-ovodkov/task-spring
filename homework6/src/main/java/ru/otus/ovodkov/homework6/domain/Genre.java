@@ -16,6 +16,9 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "Genres")
+@NamedEntityGraph(name = "genreEntityGraph", attributeNodes = {
+        @NamedAttributeNode("books")
+})
 public class Genre {
     /**
      * Идентификатор жанра
@@ -40,6 +43,15 @@ public class Genre {
     /**
      * Книги данного жанра
      */
-    @ManyToMany(mappedBy = "genres")
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.EAGER)
     private Set<Book> books;
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "idGenre=" + idGenre +
+                ", nameGenre='" + nameGenre + '\'' +
+                ", descriptionGenre='" + descriptionGenre + '\'' +
+                '}';
+    }
 }
