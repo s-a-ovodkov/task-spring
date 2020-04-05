@@ -29,7 +29,7 @@ public class ApplicationCommands {
     public String getAllBooks() {
         List<Book> books = bookRepository.getAllBooks();
         return books.stream()
-                .map(x -> x.toString())
+                .map(Book::toString)
                 .collect(Collectors.joining("\n"));
     }
 
@@ -59,7 +59,7 @@ public class ApplicationCommands {
         return books.size() == 0
                 ? "Не найдено книг указаного жанра"
                 : books.stream()
-                .map(x -> x.toString())
+                .map(Book::toString)
                 .collect(Collectors.joining("\r"));
     }
 
