@@ -7,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import ru.otus.ovodkov.homework6.domain.Book;
-import ru.otus.ovodkov.homework6.domain.Comment;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,14 +28,6 @@ public class BookDaoJpaTest {
     private static final int EXPECTED_COUNT_BOOKS = 5;
     private static final long ID_BOOK = 1L;
 
-    @DisplayName("возвращает количество книг в хранилище")
-    @Test
-    void shouldReturnExpectedCountBooks() {
-        long actual = repositoryJpa.count();
-
-        assertEquals(EXPECTED_COUNT_BOOKS, actual);
-    }
-
     @DisplayName("возвращает книгу по указаному идентификатору")
     @Test
     void shouldReturnExpectedBook() {
@@ -45,15 +36,6 @@ public class BookDaoJpaTest {
 
         assertThat(optionalActualBook).isPresent().get()
                 .isEqualToComparingFieldByField(expectedBook);
-    }
-
-    @DisplayName("удаляем указаную книгу")
-    @Test
-    void shouldDeleteBook() {
-        repositoryJpa.delete(ID_BOOK);
-        long actual = repositoryJpa.count();
-
-        assertEquals(EXPECTED_COUNT_BOOKS - 1, actual);
     }
 
     @DisplayName("должен загружать список всех книг с полной информацией по ним.")
@@ -70,16 +52,13 @@ public class BookDaoJpaTest {
                 .allMatch(x -> x.getGenres() != null && x.getGenres().size() > 0);
     }
 
-    @DisplayName("должен добавлять комментарии к книги")
+    @DisplayName("удаляем указаную книгу")
     @Test
-    void shouldExpectedAddingComment() {
-        Comment comment = new Comment();
-        comment.setCommentBook("Тестовый комментарий");
-        Optional<Book> bookOptional = repositoryJpa.addComment(ID_BOOK, comment);
+    void shouldDeleteBook() {
+        Book book = em.find(Book.class, ID_BOOK);
+        repositoryJpa.delete(book);
+        long actual = repositoryJpa.getAllBooks().size();
 
-        Book expectedBook = em.find(Book.class, ID_BOOK);
-
-        assertThat(bookOptional).isPresent().get()
-                .isEqualToComparingFieldByField(expectedBook);
+        assertEquals(EXPECTED_COUNT_BOOKS - 1, actual);
     }
 }
