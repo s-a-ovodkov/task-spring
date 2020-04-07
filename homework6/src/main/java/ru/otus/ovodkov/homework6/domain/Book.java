@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Доменная модель книги
@@ -56,13 +55,13 @@ public class Book {
     /**
      * Список комментариев к книги
      */
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
     /**
      * Список авторов книги
      */
-    @ManyToMany(targetEntity = Author.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Author.class, cascade = CascadeType.ALL)
     @JoinTable(name = "AuthorsBooks",
             joinColumns = @JoinColumn(name = "idBook", referencedColumnName = "idBook"),
             inverseJoinColumns = @JoinColumn(name = "idAuthor", referencedColumnName = "idAuthor"))
@@ -71,7 +70,7 @@ public class Book {
     /**
      * Список жанров книги
      */
-    @ManyToMany(targetEntity = Genre.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Genre.class, cascade = CascadeType.ALL)
     @JoinTable(name = "GenresBooks",
             joinColumns = @JoinColumn(name = "idBook", referencedColumnName = "idBook"),
             inverseJoinColumns = @JoinColumn(name = "idGenre", referencedColumnName = "idGenre"))
@@ -79,23 +78,11 @@ public class Book {
 
     @Override
     public String toString() {
-        String commentsStr = comments.stream()
-                .map(x -> x.toString())
-                .collect(Collectors.joining(" "));
-        String authorsStr = authors.stream()
-                .map(x -> x.toString())
-                .collect(Collectors.joining(" "));
-        String genreStr = genres.stream()
-                .map(x -> x.toString())
-                .collect(Collectors.joining(" "));
         return "Book{" +
-                "idBook=" + idBook + ",\n\t" +
-                "titleBook='" + titleBook + '\'' + ",\n\t" +
-                "edition=" + edition + ",\n\t" +
-                "yearPublishing=" + yearPublishing + ",\n\t" +
-                "comments=" + commentsStr + ",\n\t" +
-                "authors=" + authorsStr + ",\n\t" +
-                "genres=" + genreStr + ",\n" +
-                '}';
+                " idBook=" + idBook +
+                ", titleBook='" + titleBook + '\'' +
+                ", edition=" + edition +
+                ", yearPublishing=" + yearPublishing +
+                " }";
     }
 }

@@ -19,6 +19,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "Authors")
+@NamedEntityGraph(name = "authorEntityGraph", attributeNodes = {@NamedAttributeNode("books")})
 public class Author {
     /**
      * Идентификатор автора книги
@@ -48,9 +49,9 @@ public class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "idAuthor=" + idAuthor +
+                " idAuthor=" + idAuthor +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}';
+                " }";
     }
 }

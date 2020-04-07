@@ -31,15 +31,15 @@ public class Comment {
     /**
      * Книга к которой относится коментарий
      */
-    @ManyToOne(targetEntity = Book.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "idBook")
     private Book book;
 
     @Override
     public String toString() {
         return "Comment{" +
-                "idComment=" + idComment +
+                " idComment=" + idComment +
                 ", commentBook='" + commentBook + '\'' +
-                '}';
+                " }";
     }
 }
