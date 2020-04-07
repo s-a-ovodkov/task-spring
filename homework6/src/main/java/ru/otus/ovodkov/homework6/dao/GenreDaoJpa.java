@@ -3,12 +3,13 @@ package ru.otus.ovodkov.homework6.dao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.otus.ovodkov.homework6.domain.Book;
 import ru.otus.ovodkov.homework6.domain.Genre;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Set;
+import javax.persistence.Query;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Ovodkov Sergey
@@ -19,22 +20,59 @@ import java.util.Set;
 @Repository
 public class GenreDaoJpa implements GenreDao {
 
+    public static final String SELECT_BY_ID_QUERY = "SELECT g FROM Genre g WHERE g.idGenre=:idGenre";
     @PersistenceContext
     private final EntityManager em;
 
+    private static final String DELETE_BY_ID_QUERY = "DELETE FROM Genre g WHERE g.idGenre=:idGenre";
+    private static final String SELECT_ALL_QUERY = "SELECT g FROM Genre g";
+
     /**
-     * @param idGenre Идентификатор жанра
-     * @return Список книг указанного жанра
-     * @see GenreDao#getBooksByIdGenre(long)
+     * @param genre Обновляемый или добавляемый жанр
+     * @return Обновленный жанр
+     * @see GenreDao#save(Genre)
      */
     @Override
-    public Set<Book> getBooksByIdGenre(long idGenre) {
-        Genre genre = em.createQuery("SELECT g FROM Genre g WHERE g.idGenre=:idGenre", Genre.class)
+    public Genre save(Genre genre) {
+        if (genre.getIdGenre() <= 0) {
+            em.persist(genre);
+            return genre;
+        } else {
+            return em.merge(genre);
+        }
+    }
+
+    /**
+     * @param idGenre Идентификатор жанра
+     * @see GenreDao#delete(long)
+     */
+    @Override
+    public void delete(long idGenre) {
+        Query query = em.createQuery(DELETE_BY_ID_QUERY);
+        query.setParameter("idGenre", idGenre);
+        query.executeUpdate();
+    }
+
+    /**
+     * @param idGenre Идентификатор жанра
+     * @return Данные о жанре
+     * @see GenreDao#getByIdGenre(long)
+     */
+    @Override
+    public Optional<Genre> getByIdGenre(long idGenre) {
+        return Optional.ofNullable(em.createQuery(SELECT_BY_ID_QUERY, Genre.class)
                 .setParameter("idGenre", idGenre)
                 .setHint("javax.persistence.fetchgraph", em.getEntityGraph("genreEntityGraph"))
-                .getSingleResult();
-        return genre != null
-                ? genre.getBooks()
-                : Set.of();
+                .getSingleResult());
+    }
+
+    /**
+     * @return Список всех жанров
+     * @see GenreDao#getAllGenre()
+     */
+    @Override
+    public List<Genre> getAllGenre() {
+        return em.createQuery(SELECT_ALL_QUERY, Genre.class)
+                .getResultList();
     }
 }
