@@ -43,7 +43,7 @@ public class Genre {
     /**
      * Книги данного жанра
      */
-    @ManyToMany(mappedBy = "genres", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
     private Set<Book> books;
 
     @Override

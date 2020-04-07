@@ -56,13 +56,13 @@ public class Book {
     /**
      * Список комментариев к книги
      */
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
     /**
      * Список авторов книги
      */
-    @ManyToMany(targetEntity = Author.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Author.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "AuthorsBooks",
             joinColumns = @JoinColumn(name = "idBook", referencedColumnName = "idBook"),
             inverseJoinColumns = @JoinColumn(name = "idAuthor", referencedColumnName = "idAuthor"))
@@ -71,7 +71,7 @@ public class Book {
     /**
      * Список жанров книги
      */
-    @ManyToMany(targetEntity = Genre.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Genre.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "GenresBooks",
             joinColumns = @JoinColumn(name = "idBook", referencedColumnName = "idBook"),
             inverseJoinColumns = @JoinColumn(name = "idGenre", referencedColumnName = "idGenre"))

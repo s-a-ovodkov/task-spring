@@ -31,7 +31,7 @@ public class Comment {
     /**
      * Книга к которой относится коментарий
      */
-    @ManyToOne(targetEntity = Book.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Book.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "idBook")
     private Book book;
 
