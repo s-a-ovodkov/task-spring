@@ -12,12 +12,6 @@ import java.util.Optional;
  * @author Ovodkov Sergey
  */
 public interface BookDao {
-    /**
-     * Получить количество книг в хранилище
-     *
-     * @return Количество книг в хранилище
-     */
-    long count();
 
     /**
      * Добавить книгу в хранилище
@@ -30,9 +24,9 @@ public interface BookDao {
     /**
      * Удалить книгу
      *
-     * @param idBook Идентификатор удаляемой книги
+     * @param book Удаляемая книга
      */
-    void delete(long idBook);
+    void delete(Book book);
 
     /**
      * Получить книгу
@@ -48,13 +42,4 @@ public interface BookDao {
      * @return Список книг в хранилище
      */
     List<Book> getAllBooks();
-
-    /**
-     * Добавление комментария к книге
-     *
-     * @param idBook  Идентификатор комментируемой книги
-     * @param comment Добавляемый комментарий
-     * @return Обновленная книга с новым комментарием
-     */
-    Optional<Book> addComment(long idBook, Comment comment);
 }
