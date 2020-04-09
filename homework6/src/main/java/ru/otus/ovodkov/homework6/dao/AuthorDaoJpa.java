@@ -3,7 +3,6 @@ package ru.otus.ovodkov.homework6.dao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.ovodkov.homework6.domain.Author;
 
 import javax.persistence.EntityManager;
@@ -16,7 +15,6 @@ import java.util.Optional;
  * @see AuthorDao
  */
 @RequiredArgsConstructor
-@Transactional
 @Repository
 public class AuthorDaoJpa implements AuthorDao {
 

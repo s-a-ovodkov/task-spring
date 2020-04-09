@@ -2,6 +2,7 @@ package ru.otus.ovodkov.homework6.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.ovodkov.homework6.dao.BookDao;
 import ru.otus.ovodkov.homework6.domain.Author;
 import ru.otus.ovodkov.homework6.domain.Book;
@@ -49,6 +50,7 @@ public class BookServiceImpl implements BookService {
      * @throws NoEntityException
      * @see BookService#delete(long)
      */
+    @Transactional
     @Override
     public void delete(long idBook) throws NoEntityException {
         Book book = bookRepository

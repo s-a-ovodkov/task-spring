@@ -2,7 +2,6 @@ package ru.otus.ovodkov.homework6.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.ovodkov.homework6.domain.Book;
 
 import javax.persistence.EntityManager;
@@ -15,7 +14,6 @@ import java.util.Optional;
  * @see BookDao
  */
 @RequiredArgsConstructor
-@Transactional
 @Repository
 public class BookDaoJpa implements BookDao {
 

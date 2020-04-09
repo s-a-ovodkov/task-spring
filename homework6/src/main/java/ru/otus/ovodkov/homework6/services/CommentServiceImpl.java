@@ -2,6 +2,7 @@ package ru.otus.ovodkov.homework6.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.ovodkov.homework6.dao.BookDao;
 import ru.otus.ovodkov.homework6.dao.CommentDao;
 import ru.otus.ovodkov.homework6.domain.Book;
@@ -26,6 +27,7 @@ public class CommentServiceImpl implements CommentService {
      * @throws NoEntityException
      * @see CommentService#addCommentBook(long, String)
      */
+    @Transactional
     @Override
     public Comment addCommentBook(long idBook, String text) throws NoEntityException {
         Book book = bookRepository

@@ -2,7 +2,6 @@ package ru.otus.ovodkov.homework6.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.ovodkov.homework6.domain.Comment;
 
 import javax.persistence.EntityManager;
@@ -16,7 +15,6 @@ import java.util.Optional;
  * @see CommentDao
  */
 @RequiredArgsConstructor
-@Transactional
 @Repository
 public class CommentDaoJpa implements CommentDao {
 
