@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+</head>
+<body>
+<main role="main" class="container mt-4" layout:fragment="content-body">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название</th>
+            <th scope="col">Номер издания</th>
+            <th scope="col">Год издания</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <th scope="row" th:text="${book.idBook}">1</th>
+            <th th:text="${book.titleBook}">Title Book</th>
+            <th th:text="${book.edition}">3</th>
+            <th th:text="${book.yearPublishing}">2019</th>
+            <th>
+                <a class="stretched-link" th:href="@{/book(idBook=${book.idBook})}" href="book.html">...</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
