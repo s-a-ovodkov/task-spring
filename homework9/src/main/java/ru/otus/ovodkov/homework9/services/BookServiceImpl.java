@@ -83,4 +83,12 @@ public class BookServiceImpl implements BookService {
                 .orElseThrow(() -> new NoEntityException(idBook, Book.class.getName()))
                 .getComments();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Book saveBook(Book book) {
+        return bookRepository.save(book);
+    }
 }

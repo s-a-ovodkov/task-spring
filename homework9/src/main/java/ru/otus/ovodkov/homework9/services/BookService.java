@@ -15,6 +15,15 @@ import java.util.Set;
  * created on 26.04.2020
  */
 public interface BookService {
+
+    /**
+     * Сохранить книгу
+     *
+     * @param book Сохраняемая книга
+     * @return Сохраненная книга
+     */
+    Book saveBook(Book book);
+
     /**
      * Получить книгу по идентификатору
      *
