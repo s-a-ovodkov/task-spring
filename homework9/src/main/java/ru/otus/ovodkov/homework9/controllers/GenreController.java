@@ -30,7 +30,7 @@ public class GenreController {
     }
 
     @GetMapping("/books/genre")
-    public String getGenreBooks(@RequestParam("idGenre") int idGenre, Model model) {
+    public String getGenreBooks(@RequestParam("idGenre") long idGenre, Model model) {
         Set<Book> books = genreService.getBooksGenre(idGenre);
         model.addAttribute("books", books);
         return "books";

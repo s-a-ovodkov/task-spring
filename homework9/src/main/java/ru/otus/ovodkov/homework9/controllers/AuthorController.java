@@ -30,7 +30,7 @@ public class AuthorController {
     }
 
     @GetMapping("/books/author")
-    public String getAuthorBooks(@RequestParam("idAuthor") int idAuthor, Model model) {
+    public String getAuthorBooks(@RequestParam("idAuthor") long idAuthor, Model model) {
         Set<Book> books = authorService.getBooksAuthor(idAuthor);
         model.addAttribute("books", books);
         return "books";
