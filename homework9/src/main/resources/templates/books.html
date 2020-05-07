@@ -16,6 +16,7 @@
             <th scope="col">Номер издания</th>
             <th scope="col">Год издания</th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -25,7 +26,14 @@
             <th th:text="${book.edition}">3</th>
             <th th:text="${book.yearPublishing}">2019</th>
             <th>
-                <a class="stretched-link" th:href="@{/book(idBook=${book.idBook})}" href="book.html">...</a>
+                <a class="stretched-link" th:href="@{/book(idBook=${book.idBook})}" href="book.html" title="Редактировать">
+                    Редактировать
+                </a>
+            </th>
+            <th>
+                <a class="stretched-link" th:href="@{/book/delete(idBook=${book.idBook})}" href="books.html" title="Удалить">
+                    Удалить
+                </a>
             </th>
         </tr>
         </tbody>
