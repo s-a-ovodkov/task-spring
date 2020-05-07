@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+</head>
+<body>
+<main role="main" class="container mt-4" layout:fragment="content-body">
+    <form id="edit-form" th:action="@{/book/edit(idBook=${book.idBook})}" th:method="post" action="books.html">
+        <div class="form-group">
+            <label for="titleBook-input">Название книги</label>
+            <input id="titleBook-input" name="titleBook" type="text" class="form-control" th:value="${book.titleBook}" value="Хорошая книга">
+        </div>
+        <div class="form-group">
+            <label for="edition-input">Номер издания</label>
+            <input id="edition-input" name="edition" type="text" class="form-control" th:value="${book.edition}" value="1">
+        </div>
+        <div class="form-group">
+            <label for="yearPublishing-input">Год издания</label>
+            <input id="yearPublishing-input" name="yearPublishing" type="text" class="form-control" th:value="${book.yearPublishing}" value="2020">
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</main>
+</body>
+</html>
