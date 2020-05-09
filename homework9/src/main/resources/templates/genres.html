@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+</head>
+<body>
+<main role="main" class="container mt-4" layout:fragment="content-body">
+    <h2>Жанры</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Название жанра</th>
+            <th scope="col">Описание жанра</th>
+            <th scope="col">Список книг</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="genre : ${genres}">
+            <th scope="row" th:text="${genre.idGenre}">1</th>
+            <th th:text="${genre.nameGenre}">Джон</th>
+            <th th:text="${genre.descriptionGenre}">Джонсон</th>
+            <th>
+                <a class="stretched-link" th:href="@{/books/genre(idGenre=${genre.idGenre})}" href="book.html">...</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
