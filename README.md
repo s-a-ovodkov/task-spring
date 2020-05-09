@@ -12,3 +12,5 @@
 * [Задание №4](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework4)
 * [Задание №5](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework5)
 * [Задание №6](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework6)
+* [Задание №7](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework7)
+* [Задание №9](https://github.com/Gravonere/2020-02-otus-spring-Ovodkov/tree/master/homework9)
