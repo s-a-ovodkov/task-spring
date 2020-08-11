@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+</head>
+<body>
+
+<main role="main" class="container mt-4" layout:fragment="content-body">
+    <p class="text-center">
+        Книг в библиотеки: <span class="font-weight-bold js-count-book">0</span>
+    </p>
+</main>
+
+<th:block layout:fragment="script">
+    <script>
+        $(document).ready((function ($) {
+            $.get('/books/count')
+                .then(function (response) {
+                    console.log(response)
+                    $('.js-count-book').val(response)
+                })
+                .catch(function (error) {
+                    console.error(error)
+                })
+        }));
+    </script>
+</th:block>
+</body>
+</html>
