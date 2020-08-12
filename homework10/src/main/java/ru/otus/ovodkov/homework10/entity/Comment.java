@@ -1,6 +1,6 @@
 package ru.otus.ovodkov.homework10.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,7 +40,7 @@ public class Comment {
     /**
      * Книга к которой относится комментарий
      */
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "idBook")
     private Book book;
