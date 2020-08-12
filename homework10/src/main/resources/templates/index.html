@@ -9,23 +9,43 @@
 <body>
 
 <main role="main" class="container mt-4" layout:fragment="content-body">
-    <p class="text-center">
-        Книг в библиотеки: <span class="font-weight-bold js-count-book">0</span>
-    </p>
+    <div id="js-count-book">
+        <div v-if="isLoading">
+            <p class="text-center">Загрузка</p>
+        </div>
+        <p class="text-center" v-else>
+            Книг в библиотеки: <span class="font-weight-bold">{{ count }}</span>
+        </p>
+    </div>
 </main>
 
 <th:block layout:fragment="script">
     <script>
-        $(document).ready((function ($) {
-            $.get('/books/count')
-                .then(function (response) {
-                    console.log(response)
-                    $('.js-count-book').val(response)
-                })
-                .catch(function (error) {
-                    console.error(error)
-                })
-        }));
+        var vue = new Vue({
+            el: '#js-count-book',
+            data: function () {
+                return {
+                    count: 0,
+                    isLoading: true
+                }
+            },
+            methods: {
+                loadCountBooks: function () {
+                    var self = this
+                    $.get('api/books')
+                        .then(function (response) {
+                            self.count = response
+                            self.isLoading = false
+                        })
+                        .catch(function (error) {
+                            console.error(error)
+                        })
+                }
+            },
+            mounted: function () {
+                this.loadCountBooks();
+            }
+        })
     </script>
 </th:block>
 </body>
