@@ -1,5 +1,6 @@
 package ru.otus.ovodkov.homework10.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,6 +47,7 @@ public class Author {
     /**
      * Книги автора
      */
+    @JsonManagedReference
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
     private Set<Book> books;
 }

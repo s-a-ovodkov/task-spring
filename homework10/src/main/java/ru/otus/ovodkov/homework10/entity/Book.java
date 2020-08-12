@@ -1,5 +1,6 @@
 package ru.otus.ovodkov.homework10.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -57,12 +58,14 @@ public class Book {
     /**
      * Комментарии к книги
      */
+    @JsonBackReference
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private Set<Comment> comments;
 
     /**
      * Авторы книги
      */
+    @JsonBackReference
     @ManyToMany(targetEntity = Author.class, cascade = CascadeType.ALL)
     @JoinTable(name = "AuthorsBooks",
             joinColumns = @JoinColumn(name = "idBook", referencedColumnName = "idBook"),
@@ -72,6 +75,7 @@ public class Book {
     /**
      * Жанры книги
      */
+    @JsonBackReference
     @ManyToMany(targetEntity = Genre.class, cascade = CascadeType.ALL)
     @JoinTable(name = "GenresBooks",
             joinColumns = @JoinColumn(name = "idBook", referencedColumnName = "idBook"),
