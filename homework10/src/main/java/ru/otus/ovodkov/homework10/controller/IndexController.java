@@ -1,18 +1,19 @@
 package ru.otus.ovodkov.homework10.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author Ovodkov Sergey
  * created on 11.08.2020
  */
+@RequiredArgsConstructor
 @Controller
-public class HomeController {
+public class IndexController {
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index() {
         return "index";
     }
 }
