@@ -1,13 +1,11 @@
 package ru.otus.ovodkov.homework10.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import ru.otus.ovodkov.homework10.entity.Book;
 import ru.otus.ovodkov.homework10.service.BookService;
 
@@ -22,12 +20,6 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
-
-    @GetMapping("/api/books")
-    @ResponseBody
-    public ResponseEntity<Integer> getCountBooks() {
-        return ResponseEntity.ok(bookService.getBooks().size());
-    }
 
     @GetMapping("/books")
     public String getBooks(Model model) {

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import ru.otus.ovodkov.homework10.service.AuthorService;
+import ru.otus.ovodkov.homework10.service.GenreService;
 
 /**
  * @author Ovodkov Sergey
@@ -13,18 +13,18 @@ import ru.otus.ovodkov.homework10.service.AuthorService;
  */
 @RequiredArgsConstructor
 @Controller
-public class AuthorController {
+public class GenreController {
 
-    private final AuthorService authorService;
+    public final GenreService genreService;
 
-    @GetMapping("/authors")
-    public String authors() {
-        return "authors";
+    @GetMapping("/genres")
+    public String genres() {
+        return "genres";
     }
 
-    @GetMapping("/books/author/{idAuthor}")
-    public String getAuthorBooks(@PathVariable long idAuthor, Model model) {
-        model.addAttribute("books", authorService.getBooksAuthor(idAuthor));
+    @GetMapping("/books/genre/{idGenre}")
+    public String getGenreBooks(@PathVariable long idGenre, Model model) {
+        model.addAttribute("books", genreService.getBooksGenre(idGenre));
         return "books";
     }
 }

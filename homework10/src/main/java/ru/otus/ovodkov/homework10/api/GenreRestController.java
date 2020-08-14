@@ -1,10 +1,10 @@
-package ru.otus.ovodkov.homework10.controller;
+package ru.otus.ovodkov.homework10.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import ru.otus.ovodkov.homework10.entity.Genre;
 import ru.otus.ovodkov.homework10.service.GenreService;
 
@@ -12,11 +12,11 @@ import java.util.List;
 
 /**
  * @author Ovodkov Sergey
- * created on 12.08.2020
+ * created on 14.08.2020
  */
 @RequiredArgsConstructor
-@Controller
-public class GenresController {
+@RestController
+public class GenreRestController {
 
     public final GenreService genreService;
 
@@ -28,16 +28,5 @@ public class GenresController {
     @ResponseBody
     public ResponseEntity<List<Genre>> getGenres() {
         return ResponseEntity.ok(genreService.getGenres());
-    }
-
-    @GetMapping("/genres")
-    public String genres() {
-        return "genres";
-    }
-
-    @GetMapping("/books/genre/{idGenre}")
-    public String getGenreBooks(@PathVariable long idGenre, Model model) {
-        model.addAttribute("books", genreService.getBooksGenre(idGenre));
-        return "books";
     }
 }
