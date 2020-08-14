@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.otus.ovodkov.homework10.api.AuthorRestController;
 import ru.otus.ovodkov.homework10.entity.Author;
 import ru.otus.ovodkov.homework10.entity.Book;
 import ru.otus.ovodkov.homework10.service.AuthorService;
@@ -23,8 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Ovodkov Sergey
  * created on 12.08.2020
  */
-@WebMvcTest(AuthorController.class)
-public class AuthorControllerTest {
+@WebMvcTest(AuthorRestController.class)
+public class AuthorRestControllerTest {
 
     @Autowired
     private MockMvc mvc;

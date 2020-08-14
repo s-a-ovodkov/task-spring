@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.otus.ovodkov.homework10.api.GenreRestController;
 import ru.otus.ovodkov.homework10.entity.Book;
 import ru.otus.ovodkov.homework10.entity.Genre;
 import ru.otus.ovodkov.homework10.service.GenreService;
@@ -23,8 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Ovodkov Sergey
  * created on 12.08.2020
  */
-@WebMvcTest(GenresController.class)
-public class GenreControllerTest {
+@WebMvcTest(GenreRestController.class)
+public class GenreRestControllerTest {
 
     @Autowired
     private MockMvc mvc;
