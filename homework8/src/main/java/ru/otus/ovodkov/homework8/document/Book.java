@@ -6,9 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Документ описывающий книгу
@@ -44,5 +45,16 @@ public class Book {
     /**
      * Список жанров книги
      */
-    private Set<String> genres;
+    private List<String> genres;
+
+    /**
+     * Список авторов книг
+     */
+    private List<Author> authors;
+
+    /**
+     * Список комментариев к книге
+     */
+    @DBRef
+    private List<Comment> comments;
 }
