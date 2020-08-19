@@ -8,8 +8,10 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import ru.otus.ovodkov.homework8.dto.AuthorDto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Документ описывающий книгу
@@ -50,11 +52,23 @@ public class Book {
     /**
      * Список авторов книг
      */
-    private List<Author> authors;
+    private List<AuthorDto> authors;
 
     /**
      * Список комментариев к книге
      */
     @DBRef
     private List<Comment> comments;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                " bookId = " + id +
+                ", titleBook = '" + title + '\'' +
+                ", edition = " + edition +
+                ", yearPublishing = " + yearPublishing +
+                ", genres = " + genres.toString() +
+                ", authors = [" + authors.stream().map(AuthorDto::toString).collect(Collectors.joining(", ")) + "]" +
+                " }";
+    }
 }
