@@ -28,9 +28,6 @@ public class BookRepositoryTest {
     private BookRepository bookRepository;
 
     @Test
-    public void contextLoads() {}
-
-    @Test
     @DisplayName("Получение книг у которых указан жанр Java")
     public void gettingJavaBooks() {
         List<Book> books = bookRepository.findByGenresIn(List.of("Java"));
