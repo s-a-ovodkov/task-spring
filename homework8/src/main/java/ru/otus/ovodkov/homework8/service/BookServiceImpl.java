@@ -9,6 +9,7 @@ import ru.otus.ovodkov.homework8.document.Genre;
 import ru.otus.ovodkov.homework8.dto.AuthorDto;
 import ru.otus.ovodkov.homework8.exceptions.NoDocumentException;
 import ru.otus.ovodkov.homework8.repository.BookRepository;
+import ru.otus.ovodkov.homework8.repository.CommentRepository;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
+    private final CommentRepository commentRepository;
 
     /**
      * {@inheritDoc}
@@ -46,6 +48,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public void delete(String bookId) throws NoDocumentException {
         Book book = getBookById(bookId);
+        for(Comment comment: book.getComments()) {
+            commentRepository.delete(comment);
+        }
         bookRepository.delete(book);
     }
 
