@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+</head>
+<body>
+<main role="main" class="container mt-4" layout:fragment="content-body">
+    <div id="vue-app-genres">
+        <h2>Жанры</h2>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название жанра</th>
+                <th scope="col">Описание жанра</th>
+                <th scope="col">Список книг</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(genre, index) in genres" :key="index">
+                <th scope="row">{{genre.idGenre}}</th>
+                <th>{{genre.nameGenre}}</th>
+                <th>{{genre.descriptionGenre}}</th>
+                <th>
+                    <button class="btn btn-default" v-on:click="viewBook(genre.idGenre)">...</button>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<th:block layout:fragment="script">
+    <script>
+        var vue = new Vue({
+            el: '#vue-app-genres',
+            data: function () {
+                return {
+                    genres: []
+                }
+            },
+            methods: {
+                loadGenres: function () {
+                    var self = this
+                    $.get('api/genres/')
+                        .then(function (response) {
+                            self.genres = response
+                        })
+                        .catch(function (error) {
+                            console.error(error)
+                        })
+                },
+
+                viewBook: function (idGenre) {
+                    window.location.replace('/books/genre/' + idGenre)
+                }
+            },
+            mounted: function () {
+                this.loadGenres();
+            }
+        })
+    </script>
+</th:block>
+
+</body>
+</html>
