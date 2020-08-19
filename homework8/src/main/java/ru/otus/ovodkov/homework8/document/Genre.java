@@ -23,7 +23,4 @@ public class Genre {
     private ObjectId id;
 
     private String name;
-
-    @DBRef
-    private List<Book> books;
 }
