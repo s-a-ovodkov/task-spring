@@ -64,4 +64,12 @@ public interface BookService {
      * @throws NoDocumentException доменное исключение для случая когда искомая книга не найдена
      */
     List<Comment> getCommentsBook(String bookId) throws NoDocumentException;
+
+    /**
+     * Получить список книг указанного жанра
+     *
+     * @param genre Жанр книг, которые ищутся
+     * @return Список книг указанного жанра
+     */
+    List<Book> getBooksByGenre(String genre);
 }

@@ -72,4 +72,12 @@ public class BookServiceImpl implements BookService {
     public List<Comment> getCommentsBook(String bookId) throws NoDocumentException {
         return getBookById(bookId).getComments();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Book> getBooksByGenre(String genre) {
+        return bookRepository.findByGenresIn(List.of(genre));
+    }
 }
