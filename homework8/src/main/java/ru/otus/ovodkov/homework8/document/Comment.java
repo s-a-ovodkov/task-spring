@@ -20,4 +20,12 @@ public class Comment {
     private ObjectId id;
 
     private String comment;
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                " commentId = " + id +
+                ", commentBook = '" + comment + '\'' +
+                " }";
+    }
 }
