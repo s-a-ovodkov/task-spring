@@ -7,10 +7,14 @@ import ru.otus.ovodkov.homework8.document.Author;
 import ru.otus.ovodkov.homework8.document.Book;
 import ru.otus.ovodkov.homework8.document.Comment;
 import ru.otus.ovodkov.homework8.document.Genre;
+import ru.otus.ovodkov.homework8.dto.AuthorDto;
+import ru.otus.ovodkov.homework8.dto.BookDto;
 
 import java.util.List;
 
 /**
+ * Инициализирующая миграция
+ *
  * @author Ovodkov Sergey
  * created on 18.08.2020
  */
@@ -18,7 +22,7 @@ import java.util.List;
 public class InitDatabaseChangeLog {
 
     private final static String GENRE_JAVA = "Java";
-    private final static String GENRE_SPRING = "SPRING";
+    private final static String GENRE_SPRING = "Spring";
 
     private Comment comment1, comment2, comment3, comment4, comment5, comment6;
 
@@ -62,12 +66,12 @@ public class InitDatabaseChangeLog {
 
     @ChangeSet(order = "003", id = "insert-authors-003", author = "s.ovodkov")
     public void authorsInsertDb(MongockTemplate template) {
-        Book spring5 = new Book();
+        BookDto spring5 = new BookDto();
         spring5.setTitle("Spring 5. Для профессионалов");
         spring5.setEdition(5);
         spring5.setYearPublishing(2019);
 
-        List<Book> books1 = List.of(spring5);
+        List<BookDto> books1 = List.of(spring5);
 
         Author kozmina = new Author();
         kozmina.setFirstName("Юлиана");
@@ -93,12 +97,12 @@ public class InitDatabaseChangeLog {
         ho.setBooks(books1);
         template.save(ho);
 
-        Book modernJava = new Book();
+        BookDto modernJava = new BookDto();
         modernJava.setTitle("Современный язык Java");
         modernJava.setEdition(2);
         modernJava.setYearPublishing(2020);
 
-        List<Book> books2 = List.of(modernJava);
+        List<BookDto> books2 = List.of(modernJava);
 
         Author urma = new Author();
         urma.setFirstName("Рауль-Габриэль");
@@ -118,12 +122,12 @@ public class InitDatabaseChangeLog {
         alan.setBooks(books2);
         template.save(alan);
 
-        Book performanceJava = new Book();
+        BookDto performanceJava = new BookDto();
         performanceJava.setTitle("Java: оптимизация программ");
         performanceJava.setEdition(1);
         performanceJava.setYearPublishing(2019);
 
-        List<Book> books3 = List.of(performanceJava);
+        List<BookDto> books3 = List.of(performanceJava);
 
         Author evans = new Author();
         evans.setFirstName("Бенджамин");
@@ -143,7 +147,7 @@ public class InitDatabaseChangeLog {
         kris.setBooks(books3);
         template.save(kris);
 
-        Book effectJava = new Book();
+        BookDto effectJava = new BookDto();
         effectJava.setTitle("Java: эффективное программирование");
         effectJava.setEdition(3);
         effectJava.setYearPublishing(2019);
@@ -154,7 +158,7 @@ public class InitDatabaseChangeLog {
         bloh.setBooks(List.of(effectJava));
         template.save(bloh);
 
-        Book springPatterns = new Book();
+        BookDto springPatterns = new BookDto();
         springPatterns.setTitle("Spring. Все паттерны проектирования");
         springPatterns.setEdition(1);
         springPatterns.setYearPublishing(2019);
@@ -168,19 +172,19 @@ public class InitDatabaseChangeLog {
 
     @ChangeSet(order = "004", id = "insert-books-004", author = "s.ovodkov")
     public void booksInsertDb(MongockTemplate template) {
-        Author kozmina = new Author();
+        AuthorDto kozmina = new AuthorDto();
         kozmina.setFirstName("Юлиана");
         kozmina.setLastName("Козмина");
 
-        Author rob = new Author();
+        AuthorDto rob = new AuthorDto();
         rob.setFirstName("Роб");
         rob.setLastName("Харроп");
 
-        Author shefer = new Author();
+        AuthorDto shefer = new AuthorDto();
         shefer.setFirstName("Крис");
         shefer.setLastName("Шефер");
 
-        Author ho = new Author();
+        AuthorDto ho = new AuthorDto();
         ho.setFirstName("Кларенс");
         ho.setLastName("Хо");
 
@@ -193,15 +197,15 @@ public class InitDatabaseChangeLog {
         spring5.setComments(List.of(comment1, comment2));
         template.save(spring5);
 
-        Author urma = new Author();
+        AuthorDto urma = new AuthorDto();
         urma.setFirstName("Рауль-Габриэль");
         urma.setLastName("Урма");
 
-        Author fusko = new Author();
+        AuthorDto fusko = new AuthorDto();
         fusko.setFirstName("Марио");
         fusko.setLastName("Фуско");
 
-        Author alan = new Author();
+        AuthorDto alan = new AuthorDto();
         alan.setFirstName("Алан");
         alan.setLastName("Майкрофт");
 
@@ -214,15 +218,15 @@ public class InitDatabaseChangeLog {
         modernJava.setComments(List.of(comment3));
         template.save(modernJava);
 
-        Author evans = new Author();
+        AuthorDto evans = new AuthorDto();
         evans.setFirstName("Бенджамин");
         evans.setLastName("Эванс");
 
-        Author gof = new Author();
+        AuthorDto gof = new AuthorDto();
         gof.setFirstName("Джеймс");
         gof.setLastName("Гоф");
 
-        Author kris = new Author();
+        AuthorDto kris = new AuthorDto();
         kris.setFirstName("Крис");
         kris.setLastName("Ньюланд");
 
@@ -235,7 +239,7 @@ public class InitDatabaseChangeLog {
         performanceJava.setComments(List.of(comment4));
         template.save(performanceJava);
 
-        Author bloh = new Author();
+        AuthorDto bloh = new AuthorDto();
         bloh.setFirstName("Джошуа");
         bloh.setLastName("Блох");
 
@@ -248,7 +252,7 @@ public class InitDatabaseChangeLog {
         effectJava.setComments(List.of(comment5));
         template.save(effectJava);
 
-        Author dinesh = new Author();
+        AuthorDto dinesh = new AuthorDto();
         dinesh.setFirstName("Динеш");
         dinesh.setLastName("Раджупт");
 
