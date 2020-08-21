@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: library
+      port: 27017
+mongock:
+  change-logs-scan-package:
+    - ru.otus.ovodkov.homework8.changelogs
+  runner-type: initializingbean

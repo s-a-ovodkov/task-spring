@@ -137,6 +137,6 @@ $RECYCLE.BIN/
 */.idea/*
 */.factorypath
 */HELP.md
-*/.mvn
+*/.mvn/
 */mvnw
 */mvnw.cmd

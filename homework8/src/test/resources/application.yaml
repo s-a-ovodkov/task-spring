@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      port: 0
+      database: library
+mongock:
+  change-logs-scan-package:
+    - ru.otus.ovodkov.homework8.changelogs
+  runner-type: initializingbean
