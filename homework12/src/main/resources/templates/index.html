@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Библиотека</title>
+</head>
+<body>
+<main role="main" class="container mt-4" layout:fragment="content-body">
+    <p class="text-center">Книг в библиотеки: <span class="font-weight-bold" th:text="${booksCount}">2</span></p>
+</main>
+</body>
+</html>
