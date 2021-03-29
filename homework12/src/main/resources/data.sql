@@ -48,4 +48,4 @@ INSERT INTO GenresBooks(idBook, idGenre) VALUES (4, 1);
 INSERT INTO GenresBooks(idBook, idGenre) VALUES (5, 2);
 INSERT INTO GenresBooks(idBook, idGenre) VALUES (5, 1);
 
-INSERT INTO Users(id, username, password) VALUES ('f5eea1cc-33d6-407e-9176-296ba7c8e26b', 'user', '123456')
+INSERT INTO Users(id, username, password) VALUES ('f5eea1cc-33d6-407e-9176-296ba7c8e26b', 'user', '$2a$10$lvRDOa2xU3vCcfGSbjLzBuMmcoeib96rHCIu4sYz8Kve9bEdSZMHa')

@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.otus.ovodkov.homework12.entities.User;
 import ru.otus.ovodkov.homework12.repositories.UserRepository;
 
@@ -23,15 +21,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     try {
       final User user = userRepository.findByUsername(username)
           .orElseThrow(() -> new UsernameNotFoundException(username));
-      if (user != null) {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        String password = encoder.encode(user.getPassword());
-        return org.springframework.security.core.userdetails.User
-            .withUsername(user.getUsername())
-            .password(password)
-            .roles("USER")
-            .build();
-      }
+      return org.springframework.security.core.userdetails.User
+          .withUsername(user.getUsername())
+          .password("{bcrypt}" + user.getPassword())
+          .roles("USER")
+          .build();
     } catch (Exception exc) {
       exc.printStackTrace();
     }
