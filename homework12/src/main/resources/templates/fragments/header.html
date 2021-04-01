@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/}" href="index.html">Библиотека</a>
+        <button class="navbar-toggler"
+                type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/books}" href="books.html">Книги</a>
+                <a class="nav-item nav-link" th:href="@{/authors}" href="authors.html">Авторы</a>
+                <a class="nav-item nav-link" th:href="@{/genres}" href="genres.html">Жанры</a>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>
